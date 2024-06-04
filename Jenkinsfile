@@ -22,7 +22,7 @@ pipeline {
                     emailext(
                         subject: "Pipeline Success: The tests were conducted successfully",
                         body: "The tests; integration and unit, have successfully passed.",
-                        from: 'travellingoutt@gmail.com',
+                        from: 'aroomakhan126@gmail.com',
                         to: 'aroomakhan126@gmail.com',
                         attachLog: true
                     )
@@ -32,7 +32,7 @@ pipeline {
                     emailext(
                         subject: "Pipeline Failure: Unit and Integration Tests have failed",
                         body: "The tests; integration and unit, have failed. Please review.",
-                        from: 'travellingoutt@gmail.com',
+                        from: 'aroomakhan126@gmail.com',
                         to: 'aroomakhan126@gmail.com',
                         attachLog: true
                     )
@@ -54,7 +54,7 @@ pipeline {
                     emailext(
                         subject: "Pipeline Success: Security Scan has passed successfully",
                         body: "The security scan has successfully passed.",
-                        from: 'travellingoutt@gmail.com',
+                        from: 'aroomakhan126@gmail.com',
                         to: 'aroomakhan126@gmail.com',
                         attachLog: true
                     )
@@ -64,7 +64,7 @@ pipeline {
                     emailext(
                         subject: "Pipeline Failure: Security Scan has failed",
                         body: "The security scan has failed. Please review the security report to find issues.",
-                        from: 'travellingoutt@gmail.com',
+                        from: 'aroomakhan126@gmail.com',
                         to: 'aroomakhan126@gmail.com',
                         attachLog: true
                     )
