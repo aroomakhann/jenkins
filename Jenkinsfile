@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    environment {
+        STAGING_ENVIRONMENT = 'Staging'
+        PRODUCTION_ENVIRONMENT = 'Production'
+    }
     stages {
         stage('Build') {
             steps {
@@ -8,7 +11,6 @@ pipeline {
                 echo "Building Code with Maven"
             }
         }
-        
         stage('Unit tests and Integration tests') {
             steps {
                 echo "Running Unit Tests with JUnit"
@@ -37,16 +39,14 @@ pipeline {
                 }
             }
         }
-        
         stage('Code Analysis') {
             steps {
-                echo "Analyzing Code with SonarQube"
+                echo "Analysing Code with SonarQube"
             }
         }
-        
-        stage('Security Scan') {
+        stage(' Security Scan') {
             steps {
-                echo "Performing Security Scan with OWASP ZAP"
+                echo "Doing Security Scan with OWASP ZAP"
             }
             post {
                 success {
@@ -71,27 +71,21 @@ pipeline {
                 }
             }
         }
-        
         stage('Deploying to Staging') {
             steps {
-                echo "Deploying Application to Staging Environment"
-                // Add deployment steps here
+                echo "Deploying Application to Staging: ${env.STAGING_ENVIRONMENT}"
             }
         }
-        
         stage('Integration Tests on Staging') {
             steps {
-                echo "Running Integration Tests on Staging"
-                // Add integration test steps here
+                echo "Running Unit Tests with JUnit"
+                echo "Running Integration Tests with Selenium"
             }
         }
-        
         stage('Deploy to Production') {
             steps {
-                echo "Deploying Application to Production Environment"
-                // Add deployment steps here
+                echo "Deploying to Production Environment: ${env.PRODUCTION_ENVIRONMENT}"
             }
         }
     }
-}
-
+} 
